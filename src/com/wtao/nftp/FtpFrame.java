@@ -1,27 +1,26 @@
 package com.wtao.nftp;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.awt.event.ActionEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class FtpFrame extends JFrame {
 
-	private JPanel contentPane;
-	JLabel labelFilename;
+	private static final long serialVersionUID = 1L;
 
-	File file;
-	private JButton btnNewButton_1;
+	private JPanel contentPane;
+	private JLabel labelFilename;
+	private JButton buttonUpload;
+
+	private File file;
 
 	/**
 	 * Launch the application.
@@ -48,10 +47,16 @@ public class FtpFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		labelFilename = new JLabel("New label");
+		labelFilename = new JLabel("文件");
 		contentPane.add(labelFilename, BorderLayout.CENTER);
 
 		JButton btnNewButton = new JButton("选择上传的文件");
+
+		contentPane.add(btnNewButton, BorderLayout.NORTH);
+
+		buttonUpload = new JButton("上传");
+		contentPane.add(buttonUpload, BorderLayout.SOUTH);
+
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -66,15 +71,10 @@ public class FtpFrame extends JFrame {
 				// 目录、文件
 				// fileChooser.setFileSelectionMode(mode);
 
-				//
 				file = fileChooser.getSelectedFile();
 				labelFilename.setText(file.getName());
 			}
 		});
-		contentPane.add(btnNewButton, BorderLayout.NORTH);
-
-		btnNewButton_1 = new JButton("New button");
-		contentPane.add(btnNewButton_1, BorderLayout.SOUTH);
 
 	}
 
